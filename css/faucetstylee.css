@@ -81,6 +81,8 @@
 }
 
 /*FAUCET HTML STYLEE*/
+
+
 .hero-balance{
     margin: 50px 0px 50px 0;
 }
@@ -133,4 +135,22 @@
 
 .form-group-claim label{
     font-size: 32px;
+}
+
+.timer{
+    text-align: center;
+}
+
+#spnTimer{
+    font-size: 38px;
+    
+}
+
+#btnClaim{
+    visibility: hidden;
+    letter-spacing: 5px;
+}
+
+#btnWithdraw{
+    letter-spacing: 5px;
 }

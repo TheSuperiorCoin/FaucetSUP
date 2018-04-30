@@ -30,7 +30,7 @@
         <a class="nav-link" href="#">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#modal1" data-toggle="modal" data-target="#modal1">Claim</a>
+        <a id="aClaim" class="nav-link" href="#modal1" data-toggle="modal" data-target="#modal1">Claim</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#modal2" data-toggle="modal" data-target="#modal2">Tranfer</a>
@@ -45,23 +45,34 @@
             <div class="row">
                 <div class="col balance rounded">
                     <h4>Balance</h4>
-                    <span id="balance"><p>0</p></span>    
+                    <span id="balance">0</span>    
                     <br/>
                 </div><!--BALANCE ENDS-->
 
                 <div class="col unlock-balance rounded">
                     <h4>Unlock-Balance</h4>
-                    <span id="unlock-balance"><p>0</p></span>
+                    <span id="unlock-balance">0</span>
                     <br/>
                 </div> <!--UNLOCK-BALANCE ENDS-->
 
                 <div class="col total-balance rounded">
                     <h4>Total-Balance</h4>
-                    <span id="total-balance"><p>0</p></span>
+                    <span id="total-balance">0</span>
                     <br/>
                 </div> <!--TOTAL-BALANCE ENDS-->
             </div> <!--ROW ENDS-->
         </div> <!--HERO-BALANCE ENDS-->
+        
+        <div class="row">
+            <div class="col-sm-12 timer">
+                <span id=spnTimer></span>
+                <br/>
+                <br/>
+                <h2>Once timer goes nil Claim option will be available</h2>
+                <br/>
+                <br/>
+            </div> <!--TIMER ENDS-->
+        </div> <!--ROW ENDS-->
         
         
     <div class="row">
@@ -92,8 +103,11 @@
             <form id="form">
                 <div class="form-group-claim">
                     <label for="claim">5sup Every 10 minutes !</label>
+                    <br/>
+                    <span id="spnPaidMsg"></span>
                     <br/><br/>
                     <button id="btnClaim" type="button" class="btn btn-success btn-lg">Claim</button>
+                    <button id="btnWithdraw" type="button" class="btn btn-success btn-lg">Get Paid</button>
                     </div> <!--FORM-GRTOUP ENDS-->
                     <br>  
             </form> <!--ENDS FORM-->
@@ -145,7 +159,8 @@
     <script src="js/bootstrap.bundle.min.js"></script>
     <!--SCRIPTS-->
     <script src="js/faucet.js"></script>
-    
+    <script src="js/js.cookie.js"></script>
+    <script src="js/timer.js"></script>
 </body>
 
 <footer class="ends">

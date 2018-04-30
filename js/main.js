@@ -2,12 +2,13 @@ function logIn(){
     var address = $("#txtWallet").val();
     var msg     = $("#aler_msg");
     alert(address);
+    localStorage.setItem("walle", address);
     if(address == '')
         {
             alert("You need enter a Walled/Email Address");
             //CODE BELOW IS NOT WORCKIN PRPERL
-            $("#alert_modal").modal("show");
             msg.innerHTML = "You need enter a Walled/Email Address";
+            $("#alert_modal").modal("show");
             $("#txtWallet").focus();
             //SINCE HERE
         }
@@ -20,11 +21,15 @@ function logIn(){
                        {
                             if(data.status == 404)
                                 {
-                                    $("#alert_modal").modal("show");
                                     msg.innerHTML = "This Address does not exist, please Sign-Up first";
+                                    $("#alert_modal").modal("show");
                                 }
                             else
-                                {
+                                {	
+                                	var date = new Date();
+                                	var minutes = 30;
+                                	date.setTime(date.getTime() + (minutes * 60 * 1000));
+                                	Cookies.set("session", "foo", {expires : date});
                                 	window.location.href = "faucet.html";
                                 }
         });
