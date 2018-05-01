@@ -31,23 +31,51 @@ if ($user_address != null)
     $data2 = mysqli_fetch_row($result);
     $old_balance = (int) $data2[0];
     $new_balance = $old_balance + $claim;
-    $query4 = "UPDATE wallet SET wallet_balance = '$new_balance' WHERE user_id ='$userid'";
-    if (!$result = mysqli_query($cnn, $query4)) 
+
+    if(mysqli_num_rows($result)>0)
     {
-        exit(mysqli_error($cnn));
+        $query3 = "SELECT wallet_paids FROM wallet WHERE user_id = '$userid'";
+        if (!$result = mysqli_query($cnn,$query3)) 
+            exit(mysqli_error($cnn));
+    }
+
+    $data3 = mysqli_fetch_row($result);
+    $wallet_paids = (int) $data3[0];
+    $new_paids = $wallet_paids + 1;
+
+    if($new_balance >= 50)
+    {	
+    	$wallet_unlock = $new_balance;
+    	$query4 = "UPDATE wallet SET wallet_balance = '$new_balance', wallet_unlock = '$wallet_unlock', wallet_paids = '$new_paids' WHERE user_id = '$userid'";
+    	if (!$result = mysqli_query($cnn, $query4)) 
+    	{
+    		exit(mysqli_error($cnn));
+    	}else{
+    			$response['status'] = 200;
+		        $response['message'] = "Succes !";
+		        $succes = true;
+    	}
+
     }else{
-        $response['status'] = 200;
-        $response['message'] = "Succes !";
-        $succes = true;
-    }
 
-    if (!$succes) {
-        $response['status'] = 404;
-        $response['message'] = "Invalid Request !";
-    }
+	    $query4 = "UPDATE wallet SET wallet_balance = '$new_balance', wallet_paids = '$new_paids' WHERE user_id ='$userid'";
+	    if (!$result = mysqli_query($cnn, $query4)) 
+	    {
+	        exit(mysqli_error($cnn));
+	    }else{
+	        $response['status'] = 200;
+	        $response['message'] = "Succes !";
+	        $succes = true;
+	    }
+	}
 
-    	header('Content-type: application/json; charset=utf8');
-   		echo json_encode($response);
+	if (!$succes) {
+	        $response['status'] = 404;
+	        $response['message'] = "Invalid Request !";
+	    }
+	
+	header('Content-type: application/json; charset=utf8');
+	echo json_encode($response);
 
 }else{
 	$response['status'] = 404;
