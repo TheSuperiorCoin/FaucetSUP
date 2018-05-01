@@ -1,6 +1,4 @@
 
-$(document).ready(function(){
-    
 function getBalance(){
     
     if(!!Cookies.get('session'))
@@ -37,10 +35,9 @@ function getBalance(){
 
 }
 
-function setPaid(e){
+function setPaid(){
 	var address        = localStorage.getItem("walle");
 
-    $("#btnClaim").click(function(){
         $.post('./setPaid.php',
         {
         	user_address : address
@@ -51,13 +48,10 @@ function setPaid(e){
         		$("#btnClaim").css("visibility", "hide");
         		$("#aClaim").css("color", "white");
         		$("#modal1").modal("hide");
+        		window.location.reload();
         	}
+
         });
-    });
-    
-    $("#btnWithdraw").click(function(){
-        
-    });
 }
 
 function setTimer(){
@@ -72,7 +66,16 @@ function setTimer(){
                 });
 }
 
-    
+
+$(document).ready(function(){
     //start once page is load
     getBalance();
+
+    $("#btnClaim").click(function(){
+    	setPaid();
+    })
+
+    $("#btnWithdraw").click(function(){
+
+    })
 });
