@@ -39,7 +39,7 @@ include ("./connex.php"); //include db connection. import $cnn variable.
 
             $data = mysqli_fetch_row($result);
             $user_id = (int) $data[0];
-            $query3 = "INSERT INTO wallet(wallet_balance,wallet_unlock,wallet_withdraws,wallet_paids,user_id)VALUES(0, 0, 0, 0, 0, '$user_id')";
+            $query3 = "INSERT INTO wallet(wallet_balance,wallet_unlock,wallet_withdraws,wallet_paids,user_id)VALUES(0, 0, 0, 0, '$user_id')";
             if(!$result = mysqli_query($cnn,$query3)) 
             {
                 exit(mysqli_error($cnn));
