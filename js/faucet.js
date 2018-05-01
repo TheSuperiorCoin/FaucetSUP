@@ -1,4 +1,6 @@
 
+$(document).ready(function(){
+    
 function getBalance(){
     
     if(!!Cookies.get('session'))
@@ -70,8 +72,7 @@ function setTimer(){
                 });
 }
 
-
-$(document).ready(function(){
+    
     //start once page is load
     getBalance();
 });
