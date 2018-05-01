@@ -1,8 +1,7 @@
 function logIn(){
     var address = $("#txtWallet").val();
     var msg     = $("#alert_msg").val();
-    alert(address);
-    localStorage.setItem("walle", address);
+
     if(address == '')
         {
             msg.text("You need enter a Walled/Email Address");
@@ -22,6 +21,7 @@ function logIn(){
                                 }
                             else
                                 {	
+                                    localStorage.setItem("walle", data.response.user_email);
                                 	setCookie();
                                 	window.location.href = "faucet.html";
                                 }
