@@ -140,3 +140,7 @@
 #btnWithdraw{
     letter-spacing: 5px;
 }
+
+#btnLogOut:hover{
+    color: orange;
+}

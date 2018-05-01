@@ -78,4 +78,9 @@ $(document).ready(function(){
     $("#btnWithdraw").click(function(){
 
     })
+
+    $("#btnLogOut").click(function(){
+    	Cookies.remove('session');
+    	window.location.href = "index.html";
+    })
 });

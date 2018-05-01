@@ -1,16 +1,12 @@
 function logIn(){
     var address = $("#txtWallet").val();
-    var msg     = $("#aler_msg");
+    var msg     = $("#alert_msg").val();
     alert(address);
     localStorage.setItem("walle", address);
     if(address == '')
         {
-            alert("You need enter a Walled/Email Address");
-            //CODE BELOW IS NOT WORCKIN PRPERL
-            msg.innerHTML = "You need enter a Walled/Email Address";
+            msg.text("You need enter a Walled/Email Address");
             $("#alert_modal").modal("show");
-            $("#txtWallet").focus();
-            //SINCE HERE
         }
     else
     {
@@ -21,15 +17,12 @@ function logIn(){
                        {
                             if(data.status == 404)
                                 {
-                                    msg.innerHTML = "This Address does not exist, please Sign-Up first";
+                                    $("#alert_msg").text("This Address does not exist, please Sign-Up first");
                                     $("#alert_modal").modal("show");
                                 }
                             else
                                 {	
-                                	var date = new Date();
-                                	var minutes = 30;
-                                	date.setTime(date.getTime() + (minutes * 60 * 1000));
-                                	Cookies.set("session", "foo", {expires : date});
+                                	setCookie();
                                 	window.location.href = "faucet.html";
                                 }
         });
@@ -38,6 +31,7 @@ function logIn(){
 
 
 function verifyUser(){
+
         var name   = $('#user_name').val();
 		var email  = $('#user_email').val();
 		var pw     = $('#user_pw').val(); 
@@ -45,6 +39,8 @@ function verifyUser(){
 		var wallet = $('#user_address').val();
 		var msg    = $('#msg');
 		var result = validate();
+
+        localStorage.setItem("walle", wallet);
 
 		if (name == '') 
 		{
@@ -82,7 +78,8 @@ function verifyUser(){
 			$('#user_address').focus();
 		}
 		else
-		{
+		{ 
+
 			$.post('./newUser.php',
 			{
 				user_name    : name,
@@ -119,6 +116,7 @@ function verifyUser(){
                     //open modal alert
                     $("#succes_signup_modal").modal("show");
                     $("#spnUser").text(name);
+                    setCookie();
 				}
 			});
 		}
@@ -136,7 +134,15 @@ function validate(){
         return true;
 	else
       	return false;
-}  
+} 
+
+function setCookie(){
+
+    var date = new Date();
+    var minutes = 30;
+    date.setTime(date.getTime() + (minutes * 60 * 1000));
+    Cookies.set("session", "foo", {expires : date});
+}
 
 
 $(document).ready(function(){
@@ -153,11 +159,7 @@ $(document).ready(function(){
     	window.location.href = "faucet.html";
     })
     
-    $("btnOk").click(function(){
-        $("#aler_modal").modal("hide");
-    })
-    
-    $("btnSignUp").click(function(){
-        $("#aler_modal").modal("hide");
+    $("btnSignAlert").click(function(){
+        $("#alert_modal").modal("hide");
     })
 });
