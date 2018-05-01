@@ -40,8 +40,6 @@ function verifyUser(){
 		var msg    = $('#msg');
 		var result = validate();
 
-        localStorage.setItem("walle", wallet);
-
 		if (name == '') 
 		{
 			msg.text("Your Name is Requiered! Please enter your Name or Username");
@@ -88,6 +86,7 @@ function verifyUser(){
 				user_address : wallet
 			}).done(function(data)
 			{    
+
   				if(data.user_email == email)
 				{
 					$("#msg").text("There is an account registered whith this email");
@@ -104,7 +103,11 @@ function verifyUser(){
                 }
 				else
 				{	
-					alert("succes");
+                    
+                    //Cookie
+                    localStorage.setItem("walle", wallet);
+                    setCookie();
+
 					$("#msg").text("");
 					$("#user_address").val(wallet);
                     $("#user_name").val("");
@@ -116,7 +119,7 @@ function verifyUser(){
                     //open modal alert
                     $("#succes_signup_modal").modal("show");
                     $("#spnUser").text(name);
-                    setCookie();
+
 				}
 			});
 		}
@@ -161,5 +164,6 @@ $(document).ready(function(){
     
     $("btnSignAlert").click(function(){
         $("#alert_modal").modal("hide");
+        $("#succes_signup_modal").modal("show");
     })
 });

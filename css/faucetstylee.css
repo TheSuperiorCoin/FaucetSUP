@@ -29,6 +29,7 @@
 }
 
 #alert_msg{
+    text-align: center;
     color: black;
     font-size: 18px;
 }
