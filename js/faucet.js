@@ -1,4 +1,3 @@
-var succes = true; //variable to handle the timer
 
 function getBalance(){
     
@@ -17,7 +16,7 @@ function getBalance(){
         else{
             $("#balance").text(data.wallet_balance);
             $("#unlock-balance").text(data.wallet_unlock);
-            $("#total").text(data.wallet_total);
+            
             
             if(data.wallet_unlock >= 50)
                 {
@@ -30,9 +29,37 @@ function getBalance(){
             }
             
             //START TIMER
-            if(succes)
-            {
-                $('#spnTimer').timer({
+            setTimer();
+        }
+    });
+
+}
+
+function setPaid(e){
+	var address        = localStorage.getItem("walle");
+
+    $("#btnClaim").click(function(){
+        $.post('./setPaid.php',
+        {
+        	user_address : address
+        }).done(function(data){
+        	if(data.status == 404)
+        		alert(data.message);
+        	else{
+        		$("#btnClaim").css("visibility", "hide");
+        		$("#aClaim").css("color", "white");
+        		$("#modal1").modal("hide");
+        	}
+        });
+    });
+    
+    $("#btnWithdraw").click(function(){
+        
+    });
+}
+
+function setTimer(){
+	 $('#spnTimer').timer({
                     countdown: true,
                     duration: '1m',
                     callback: function() {
@@ -41,23 +68,6 @@ function getBalance(){
                     },
                     repeat: true //repeatedly calls the callback you specify
                 });
-                
-                succes = false; //this is not worcking propetly
-            }
-        }
-    });
-    
-    alert(succes);
-}
-
-function getPaid(e){
-    $("#btnClaim").click(function(){
-        
-    });
-    
-    $("#btnWithdraw").click(function(){
-        
-    });
 }
 
 

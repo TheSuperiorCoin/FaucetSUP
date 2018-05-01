@@ -115,20 +115,6 @@
     color: #877d7d;
 }
 
-.total-balance{
-    padding: 20px 0 10px 0;
-    text-align: center; 
-    background-color: #343a40;
-    color: #fff;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-#total-balance{
-    font-size: 26px;
-    color: #877d7d;
-}
-
 .form-group-claim{
     text-align: center;
 }
