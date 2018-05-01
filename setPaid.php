@@ -41,7 +41,7 @@ if ($user_address != null)
         $succes = true;
     }
 
-    if (!succes) {
+    if (!$succes) {
         $response['status'] = 404;
         $response['message'] = "Invalid Request !";
     }
