@@ -5,7 +5,7 @@ $user_address = $_POST['user_address'];
 $response     = array();
 //$cnn        = include
 
-if($user_address != null && $method != null)
+if($user_address != null)
 {
 		$query = "SELECT id_user FROM users WHERE user_address = '$user_address'";
 		if (!$result = mysqli_query($cnn, $query))
