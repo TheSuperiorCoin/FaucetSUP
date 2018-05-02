@@ -35,6 +35,11 @@ if ($user_address != null)
 		$query3 = "INSERT INTO vf_payments (payments_balance, payments_status, payments_wallet, payments_date) VALUES ('$wallet_balance', '$status', '$user_address',now()) ";
 		if (!$result = mysqli_query($cnn, $query3))
 		 exit(mysqli_error($cnn));
+		else{
+			$response['status'] = 200;
+	        $response['message'] = "Succes !";
+	        $succes = true;
+		}
 	
 	//Update the Balance
 
@@ -55,7 +60,7 @@ if ($user_address != null)
 		$new_withdraws = $old_withdraws + 1;
 
 	$query6 = "UPDATE wallet SET wallet_balance = 0, wallet_unlock = '$new_balance', wallet_withdraws = '$new_withdraws' WHERE user_id = '$userid'";
-	if (!$result = mysqli_query($query6)) 
+	if (!$result = mysqli_query($cnn,$query6)) 
 		exit(mysqli_error($cnn));
 	else{
 			$response['status'] = 200;
