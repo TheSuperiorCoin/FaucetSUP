@@ -43,8 +43,7 @@ function setPaid(){
         {
         	user_address : address
         }).done(function(data){
-        	var values  = JSON.parse(data);
-                value  = values[0];
+        	var values  = JSON.parse(data[0]);
             var     m  = parseInt(value);
 
             if(data.status == 404)
