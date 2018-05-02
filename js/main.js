@@ -161,7 +161,7 @@ $(document).ready(function(){
     $("#btnRedirect").click(function(){
         alert("This Could be an Add-on")
     	window.location.href = "faucet.html";
-        window.open("https://www.youtube.com/watch?v=coVJIoQJx9Q", "Diseño Web", "width=300, height=200")
+        window.open("https://www.youtube.com/watch?v=coVJIoQJx9Q", "Diseño Web", "width=300, height=200");
     })
     
     $("btnSignAlert").click(function(){

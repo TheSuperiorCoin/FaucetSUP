@@ -18,13 +18,13 @@ function getBalance(){
             $("#unlock-balance").text(data.wallet_unlock);
             
             
-            if(data.wallet_unlock >= 50)
+            if(data.wallet_balance >= 50)
                 {
                     $("#spnPaidMsg").text("You are avialable to windraw your SUPs now !");
                     $("#btnWithdraw").css("visibility", "visible");
                 }
             else{
-                $("#spnPaidMsg").text("You need 50-SUP or more to get paid ! Keep playing");
+                $("#spnPaidMsg").text("You need 50-SUPs or more to get paid ! Keep playing");
                 $("#btnWithdraw").css("visibility", "hidden");
             }
             
@@ -54,6 +54,28 @@ function setPaid(){
         });
 }
 
+function setWithdraws(){
+    var address     = localStorage.getItem("walle");
+    var balance     = $("#balance").val();
+
+    $.post('./setPayments.php',
+    {
+        user_address   : address,
+        wallet_balance : balance
+    }).done(function(data){
+        if (data.status == 404)
+            alert(data.message);
+        else{
+                alert("your Payment had a Successfully process")
+                $("#btnClaim").css("visibility", "hide");
+                $("#aClaim").css("color", "white");
+                $("#modal1").modal("hide");
+                window.location.reload();
+        }
+    });
+
+}
+
 function setTimer(){
 	 $('#spnTimer').timer({
                     countdown: true,
@@ -62,7 +84,7 @@ function setTimer(){
                         $("#aClaim").css("color", "orange");
                         $("#btnClaim").css("visibility", "visible");
                     },
-                    repeat: true //repeatedly calls the callback you specify
+                    repeat: false //repeatedly calls the callback you specify
                 });
 }
 
@@ -72,11 +94,15 @@ $(document).ready(function(){
     getBalance();
 
     $("#btnClaim").click(function(){
+        alert("This could an Add-On");
+        window.open("https://www.youtube.com/watch?v=coVJIoQJx9Q", "Diseño Web", "width=300, height=200");
     	setPaid();
     })
 
     $("#btnWithdraw").click(function(){
-
+        alert("This could an Add-On");
+        window.open("https://www.youtube.com/watch?v=coVJIoQJx9Q", "Diseño Web", "width=300, height=200");
+        setWithdraws();
     })
 
     $("#btnLogOut").click(function(){

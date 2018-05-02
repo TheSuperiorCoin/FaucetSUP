@@ -43,21 +43,6 @@ if ($user_address != null)
     $wallet_paids = (int) $data3[0];
     $new_paids = $wallet_paids + 1;
 
-    if($new_balance >= 50)
-    {	
-    	$wallet_unlock = $new_balance;
-    	$query4 = "UPDATE wallet SET wallet_balance = '$new_balance', wallet_unlock = '$wallet_unlock', wallet_paids = '$new_paids' WHERE user_id = '$userid'";
-    	if (!$result = mysqli_query($cnn, $query4)) 
-    	{
-    		exit(mysqli_error($cnn));
-    	}else{
-    			$response['status'] = 200;
-		        $response['message'] = "Succes !";
-		        $succes = true;
-    	}
-
-    }else{
-
 	    $query4 = "UPDATE wallet SET wallet_balance = '$new_balance', wallet_paids = '$new_paids' WHERE user_id ='$userid'";
 	    if (!$result = mysqli_query($cnn, $query4)) 
 	    {
@@ -67,7 +52,7 @@ if ($user_address != null)
 	        $response['message'] = "Succes !";
 	        $succes = true;
 	    }
-	}
+	
 
 	if (!$succes) {
 	        $response['status'] = 404;
