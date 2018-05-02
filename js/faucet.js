@@ -56,7 +56,7 @@ function setPaid(){
             }
         	else{
 
-                $.post('./setPayments.php'
+                $.post('./setPayments.php',
                 {
                     user_address : address
                 }).done(function(data){
