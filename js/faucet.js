@@ -56,7 +56,7 @@ function setPaid(){
             }
         	else{
 
-                $.post('./setPayments.php',
+                $.post('./setPaid.php',
                 {
                     user_address : address
                 }).done(function(data){
@@ -71,7 +71,7 @@ function setPaid(){
         });
 }
 
-function setWithdraws(){
+function setPayments(){
     var address     = localStorage.getItem("walle");
 
     $.post('./setPayments.php',
@@ -119,7 +119,7 @@ $(document).ready(function(){
     $("#btnWithdraw").click(function(){
         alert("This could an Add-On");
         window.open("https://www.youtube.com/watch?v=coVJIoQJx9Q", "Diseño Web", "width=300, height=200");
-        setWithdraws();
+        setPayments();
     })
 
     $("#btnLogOut").click(function(){
