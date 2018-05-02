@@ -57,12 +57,10 @@ function setPaid(){
 
 function setWithdraws(){
     var address     = localStorage.getItem("walle");
-    var balance     = $("#balance").val();
 
     $.post('./setPayments.php',
     {
-        user_address   : address,
-        wallet_balance : balance
+        user_address   : address
     }).done(function(data){
         if (data.status == 404)
             alert(data.message);
