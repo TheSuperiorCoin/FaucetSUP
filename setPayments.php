@@ -22,15 +22,15 @@ if ($user_address != null)
     if (!$result = mysqli_query($cnn,$query2)) 
         exit(mysqli_error($cnn));
 
-    if(mysqli_num_rows($result)>0)
+    if(mysqli_num_rows($result) > 0)
     {
         $query3 = "SELECT wallet_balance FROM wallet WHERE user_id = '$userid'";
         if (!$result = mysqli_query($cnn,$query3)) 
             exit(mysqli_error($cnn));
-
-    	$data2 = myqli_fetch_row(!$result);
-    	$wallet_balance = (int) $data2[0];
     }
+
+   	    $data2 = mysqli_fetch_row($result);
+    	$wallet_balance = (int) $data2[0];
 
 		$query3 = "INSERT INTO vf_payments (payments_balance, payments_status, payments_wallet, payments_date) VALUES ('$wallet_balance', '$status', '$user_address',now()) ";
 		if (!$result = mysqli_query($cnn, $query3))
