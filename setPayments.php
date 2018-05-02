@@ -42,7 +42,7 @@ if ($user_address != null)
 	if (!$result = mysqli_query($cnn, $query4)) 
 		exit(mysqli_error($cnn));
 
-		$data3 = mysqli_fetch_row(!$result);
+		$data3 = mysqli_fetch_row($result);
 		$old_balance = (int) $data3[0];
 		$new_balance = $old_balance + $wallet_balance;
 
@@ -50,12 +50,12 @@ if ($user_address != null)
 	if (!$result = mysqli_query($cnn, $query5)) 
 		exit(mysqli_error($cnn));
 
-		$data4 = mysqli_fetch_row(!$result);
+		$data4 = mysqli_fetch_row($result);
 		$old_withdraws = (int) $data4[0];
 		$new_withdraws = $old_withdraws + 1;
 
 	$query6 = "UPDATE wallet SET wallet_balance = 0, wallet_unlock = '$new_balance', wallet_withdraws = '$new_withdraws' WHERE user_id = '$userid'";
-	if (!$result = $mysqli_query($query6)) 
+	if (!$result = mysqli_query($query6)) 
 		exit(mysqli_error($cnn));
 	else{
 			$response['status'] = 200;
