@@ -30,6 +30,7 @@ function getBalance(){
             
             //START TIMER
             setTimer();
+
         }
     });
 
@@ -77,15 +78,17 @@ function setWithdraws(){
 }
 
 function setTimer(){
-	 $('#spnTimer').timer({
-                    countdown: true,
-                    duration: '1m',
-                    callback: function() {
-                        $("#aClaim").css("color", "orange");
-                        $("#btnClaim").css("visibility", "visible");
-                    },
-                    repeat: false //repeatedly calls the callback you specify
-                });
+	 
+     $('#spnTimer').timer({
+            countdown: true,
+            duration: '1m',      // This will start the countdown from 3 mins 40 seconds
+            callback: function() 
+            {  // This will execute after the duration has elapsed
+                $("#aClaim").css("color", "orange");
+                $("#btnClaim").css("visibility", "visible");
+            },
+            repeat: false
+    });
 }
 
 
