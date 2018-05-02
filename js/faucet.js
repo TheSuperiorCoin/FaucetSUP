@@ -39,17 +39,33 @@ function getBalance(){
 function setPaid(){
 	var address        = localStorage.getItem("walle");
 
-        $.post('./setPaid.php',
+        $.post('./checkClaims.php',
         {
         	user_address : address
         }).done(function(data){
-        	if(data.status == 404)
-        		alert(data.message);
+        	var values  = JSON.parse(data);
+                value  = values[0];
+            var     m  = parseInt(value);
+
+            if(data.status == 404)
+                alert(data.message);
+            else if ( m < 1) 
+            {
+                $wait = (1 - m);
+                alert("You have to wait "+$wait+" minutes to claim!")
+            }
         	else{
+
+                $.post('./setPayments.php'
+                {
+                    user_address : address
+                }).done(function(data){
+
         		$("#btnClaim").css("visibility", "hide");
         		$("#aClaim").css("color", "white");
         		$("#modal1").modal("hide");
         		window.location.reload();
+                });
         	}
 
         });
