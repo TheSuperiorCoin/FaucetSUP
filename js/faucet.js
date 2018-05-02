@@ -8,7 +8,7 @@ function getBalance(){
     {
         user_address : address
     }).done(function(data){
-        //var user = JSON.parse(data);
+        
         if(data.status == 404)
         {
             alert(data.message);
