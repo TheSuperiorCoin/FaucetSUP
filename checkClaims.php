@@ -15,7 +15,7 @@ if($user_address != null)
 		$userid = (int) $data[0];
 
 		$query2 = "SELECT TIMESTAMPDIFF(MINUTE,MAX(paids_update),now()) as minutes FROM wallet WHERE user_id = '$userid'";
-		if (!$result2 = mysqli_quey($cnn, $query2)) 
+		if (!$result2 = mysqli_query($cnn, $query2)) 
 			exit(mysqli_error($cnn));
 
 		$data2 = mysqli_fetch_row($result2);
