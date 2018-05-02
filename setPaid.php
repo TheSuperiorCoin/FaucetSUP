@@ -43,7 +43,7 @@ if ($user_address != null)
     $wallet_paids = (int) $data3[0];
     $new_paids = $wallet_paids + 1;
 
-	    $query4 = "UPDATE wallet SET wallet_balance = '$new_balance', wallet_paids = '$new_paids' WHERE user_id ='$userid'";
+	    $query4 = "UPDATE wallet SET wallet_balance = '$new_balance', wallet_paids = '$new_paids', paids_update = now() WHERE user_id ='$userid'";
 	    if (!$result = mysqli_query($cnn, $query4)) 
 	    {
 	        exit(mysqli_error($cnn));
