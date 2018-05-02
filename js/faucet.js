@@ -8,7 +8,7 @@ function getBalance(){
     {
         user_address : address
     }).done(function(data){
-        //var user = JSON.parse(data);
+        
         if(data.status == 404)
         {
             alert(data.message);
@@ -79,7 +79,7 @@ function setWithdraws(){
 function setTimer(){
 	 $('#spnTimer').timer({
                     countdown: true,
-                    duration: '1m',
+                    duration: '10s',
                     callback: function() {
                         $("#aClaim").css("color", "orange");
                         $("#btnClaim").css("visibility", "visible");

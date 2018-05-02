@@ -21,7 +21,7 @@ function logIn(){
                                 }
                             else
                                 {	
-                                    localStorage.setItem("walle", data.response.user_email);
+                                    	localStorage.setItem("walle", data.user_address);
                                 	setCookie();
                                 	window.location.href = "faucet.html";
                                 }
