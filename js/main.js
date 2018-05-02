@@ -1,10 +1,9 @@
 function logIn(){
     var address = $("#txtWallet").val();
-    var msg     = $("#alert_msg").val();
 
     if(address == '')
         {
-            msg.text("You need enter a Walled/Email Address");
+            $("#alert_msg").text("You need enter a Walled/Email Address");
             $("#alert_modal").modal("show");
         }
     else
