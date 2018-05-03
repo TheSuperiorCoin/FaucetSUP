@@ -47,7 +47,7 @@ function getBalance(){
             	$("#spnPoolAmount").text("INVALID CONNECTION");
             }
         };
-    xhttp.open("GET"," ./pool-show.php", true); //(METHOD,URL,BOOLEAN)
+    xhttp.open("GET","pool-show.php", true); //(METHOD,URL,BOOLEAN)
     xhttp.send();// SEND THE REQUEST
 
 }
