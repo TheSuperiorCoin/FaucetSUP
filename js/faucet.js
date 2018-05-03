@@ -30,9 +30,25 @@ function getBalance(){
             
             //START TIMER
             setTimer();
+            $("$#destination").val(address);
 
         }
     });
+
+    //GET POOL BALANCE
+
+    var xhttp = new XMLHttpRequest(); 
+    //CHECK STATUS VALUES -IF-ADD TEXT TO DIV -ELSE-NO CONNECTION MESSAGE
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                $("#spnPoolAmount").text(this.response);
+            }
+            else{
+            	$("#spnPoolAmount").text("INVALID CONNECTION");
+            }
+        };
+    xhttp.open("GET"," ./pool-show.php", true); //(METHOD,URL,BOOLEAN)
+    xhttp.send();// SEND THE REQUEST
 
 }
 
@@ -134,8 +150,7 @@ function setTimer(){
 $(document).ready(function(){
     //start once page is load
     getBalance();
-    setTbPayments();
-
+    
     $("#btnClaim").click(function(){
         alert("This could an Add-On");
         window.open("https://www.youtube.com/watch?v=coVJIoQJx9Q", "Diseño Web", "width=300, height=200");
