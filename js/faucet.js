@@ -91,25 +91,8 @@ function setPayments(){
 
 }
 
-function setTimer(){
-	 
-     $('#spnTimer').timer({
-            countdown: true,
-            duration: '1m',      // This will start the countdown from 3 mins 40 seconds
-            callback: function() 
-            {  // This will execute after the duration has elapsed
-                $("#aClaim").css("color", "orange");
-                $("#btnClaim").css("visibility", "visible");
-            },
-            repeat: false
-    });
-}
-
-
-$(document).ready(function(){
-    //start once page is load
-    getBalance();
-    
+function setTbPayments(){
+   
     $("#tb-payments").DataTable({
         "bDeferRender"    : true,
         "sPaginationType" : "full_numbers",
@@ -131,6 +114,27 @@ $(document).ready(function(){
                         "sPrevious" : "back"
                     }
     })
+}
+
+function setTimer(){
+	 
+     $('#spnTimer').timer({
+            countdown: true,
+            duration: '1m',      // This will start the countdown from 3 mins 40 seconds
+            callback: function() 
+            {  // This will execute after the duration has elapsed
+                $("#aClaim").css("color", "orange");
+                $("#btnClaim").css("visibility", "visible");
+            },
+            repeat: false
+    });
+}
+
+
+$(document).ready(function(){
+    //start once page is load
+    getBalance();
+    
 
     $("#btnClaim").click(function(){
         alert("This could an Add-On");
