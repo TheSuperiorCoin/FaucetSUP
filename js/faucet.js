@@ -134,7 +134,7 @@ function setTimer(){
 $(document).ready(function(){
     //start once page is load
     getBalance();
-    
+    setTbPayments();
 
     $("#btnClaim").click(function(){
         alert("This could an Add-On");
