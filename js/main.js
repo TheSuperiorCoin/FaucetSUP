@@ -76,84 +76,64 @@ function verifyUser(){
 		}
 		else
 		{ 
-
-			$.post('./newUser.php',
-			{
-				user_name    : name,
-				user_email   : email,
-				user_pw      : pw,
-				user_address : wallet
-			}).done(function(data)
-			{    
-
-  				if(data.user_email == email)
-				{
-					$("#msg").text("There is an account registered whith this email");
-                    $("#user_email").focus();
-				}
-				else if(data.user_address == wallet)
-				{
-					$("#msg").text("There is an account registered with this wallet address");
-                    $("#user_address").focus();
-				}         
-				else if(data.status == 404)
+            $.post('https://www.google.com/recaptcha/api/siteverify',
                 {
-                    $("#msg").text(data.message);  
-                }
-				else
-				{	
-
-                    $.post('https://www.google.com/recaptcha/api/siteverify',
-                        {
-                            secret : "6LdKHlcUAAAAANNw_Dbvb5oxQ7cFvwUcrNfKV0J1"
-                        }).done(function(data,status)
-                        {
-                            if (data == "g-recaptcha-response") 
+                    secret : "6LdKHlcUAAAAANNw_Dbvb5oxQ7cFvwUcrNfKV0J1"
+                }).done(function(data,status)
+                {
+                    if (data == "g-recaptcha-response") 
+                    {
+                        $.post('./newUser.php',
                             {
-                                //Cookie
-                                localStorage.setItem("walle", wallet);
-                                setCookie();
+                                user_name    : name,
+                                user_email   : email,
+                                user_pw      : pw,
+                                user_address : wallet
+                            }).done(function(data)
+                            {    
 
-                                $("#msg").text("");
-                                $("#user_address").val(wallet);
-                                $("#user_name").val("");
-                                $("#user_email").val("");
-                                $("#user_pw").val("");
-                                $("#cpass").val("");
-                                $("#user_address").val("");
-                         
-                                //open modal alert
-                                $("#succes_signup_modal").modal("show");
-                                $("#spnUser").text(name);
-                                
-                            }else{
+                                if(data.user_email == email)
+                                {
+                                    $("#msg").text("There is an account registered whith this email");
+                                    $("#user_email").focus();
+                                }
+                                else if(data.user_address == wallet)
+                                {
+                                    $("#msg").text("There is an account registered with this wallet address");
+                                    $("#user_address").focus();
+                                }         
+                                else if(data.status == 404)
+                                {
+                                    $("#msg").text(data.message);  
+                                }
+                                else
+                                {   
+                                        
+                                    //Cookie
+                                    localStorage.setItem("walle", wallet);
+                                    setCookie();
 
-                                 $("#alert_msg").text("You need to select the reCaptcha");
-                                 $("#alert_modal").modal("show");
-                            }
-                        });
+                                    $("#msg").text("");
+                                    $("#user_address").val(wallet);
+                                    $("#user_name").val("");
+                                    $("#user_email").val("");
+                                    $("#user_pw").val("");
+                                    $("#cpass").val("");
+                                    $("#user_address").val("");
+                             
+                                    //open modal alert
+                                    $("#succes_signup_modal").modal("show");
+                                    $("#spnUser").text(name);
+                                    
+                                }
+                            });
                         
-                    /*
+                    }else{
 
-                    //Cookie
-                    localStorage.setItem("walle", wallet);
-                    setCookie();
-
-					$("#msg").text("");
-					$("#user_address").val(wallet);
-                    $("#user_name").val("");
-                    $("#user_email").val("");
-                    $("#user_pw").val("");
-                    $("#cpass").val("");
-                    $("#user_address").val("");
-             
-                    //open modal alert
-                    $("#succes_signup_modal").modal("show");
-                    $("#spnUser").text(name);
-                    
-                    */
-				}
-			});
+                         msg.text("Are you a robot? Then select the reCaptcha !!");
+                         msg.focus();
+                    }
+                });
 		}
 }
 
