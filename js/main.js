@@ -103,6 +103,38 @@ function verifyUser(){
 				else
 				{	
 
+                    $.post('https://www.google.com/recaptcha/api/siteverify',
+                        {
+                            secret : "6LdKHlcUAAAAANNw_Dbvb5oxQ7cFvwUcrNfKV0J1"
+                        }).done(function(data,status)
+                        {
+                            if (data == "g-recaptcha-response") 
+                            {
+                                //Cookie
+                                localStorage.setItem("walle", wallet);
+                                setCookie();
+
+                                $("#msg").text("");
+                                $("#user_address").val(wallet);
+                                $("#user_name").val("");
+                                $("#user_email").val("");
+                                $("#user_pw").val("");
+                                $("#cpass").val("");
+                                $("#user_address").val("");
+                         
+                                //open modal alert
+                                $("#succes_signup_modal").modal("show");
+                                $("#spnUser").text(name);
+                                
+                            }else{
+
+                                 $("#alert_msg").text("You need to select the reCaptcha");
+                                 $("#alert_modal").modal("show");
+                            }
+                        });
+                        
+                    /*
+
                     //Cookie
                     localStorage.setItem("walle", wallet);
                     setCookie();
@@ -118,7 +150,8 @@ function verifyUser(){
                     //open modal alert
                     $("#succes_signup_modal").modal("show");
                     $("#spnUser").text(name);
-
+                    
+                    */
 				}
 			});
 		}

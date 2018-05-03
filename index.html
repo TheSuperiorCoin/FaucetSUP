@@ -9,6 +9,9 @@
     
     <!-- SCRIPTS --> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
+    <!--RECAPTCHA-->
+    <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 
 <body>
@@ -63,7 +66,9 @@
                                             <label for="user_address">Wallet Address</label>
                                             <input type="text" id="user_address" placeholder="Wallet-Address" class="form-control" required />
                                             </div>		
-                                            <br> 	
+                                            <br>
+                                            <div class="g-recaptcha" data-sitekey="6LdKHlcUAAAAAGgrRg639ZPqtaNP3JMny-izMjMX"></div>
+                                            <br/> 	
                                             <button id="submit" type="button" class="btn btn-success">Sign me up!</button>
                                 </form> <!--ENDS FORM-->
                             </div> <!--ENDS MODAL-BODY-->
