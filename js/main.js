@@ -85,7 +85,7 @@ function verifyUser(){
                         'Access-Control-Allow-Origin' : "https://www.google.com/recaptcha/api/siteverify",
                     },
                     data : "6LdKHlcUAAAAANNw_Dbvb5oxQ7cFvwUcrNfKV0J1"  
-                }).done(function(data) 
+                }).success(function(data) 
                 {
                     if (data == "g-recaptcha-response") 
                     {
@@ -95,7 +95,7 @@ function verifyUser(){
                                 user_email   : email,
                                 user_pw      : pw,
                                 user_address : wallet
-                            }).success(function(data)
+                            }).done(function(data)
                             {    
 
                                 if(data.user_email == email)
