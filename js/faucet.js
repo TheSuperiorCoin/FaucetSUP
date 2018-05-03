@@ -30,24 +30,12 @@ function getBalance(){
             
             //START TIMER
             setTimer();
-            $("$#destination").val(address); //not worcking properly
+            $("$#destination").text(address); //not worcking properly
 
         }
     });
 
     //GET POOL BALANCE
-
-    $.get("./pool-show.php", function(data,status){
-        if (status == "succes" ) 
-        {
-            $("#spnPoolAmount").text(this.data);
-        }
-        else{
-            $("#spnPoolAmount").text("INVALID CONNECTION");
-        }
-    });
-
-    /*
     var xhttp = new XMLHttpRequest(); 
     //CHECK STATUS VALUES -IF-ADD TEXT TO DIV -ELSE-NO CONNECTION MESSAGE
         xhttp.onreadystatechange = function(){
@@ -60,7 +48,7 @@ function getBalance(){
         };
     xhttp.open("GET","pool-show.php", true); //(METHOD,URL,BOOLEAN)
     xhttp.send();// SEND THE REQUEST
-    */
+
 }
 
 function setPaid(){
