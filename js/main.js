@@ -95,7 +95,7 @@ function verifyUser(){
                                 user_email   : email,
                                 user_pw      : pw,
                                 user_address : wallet
-                            }).done(function(data)
+                            }).success(function(data)
                             {    
 
                                 if(data.user_email == email)
@@ -139,10 +139,7 @@ function verifyUser(){
                          msg.text("Are you a robot? Then select the reCaptcha !!");
                          msg.focus();
                     }
-                }).error(function(e){
-                    msg.text("Are you a robot? Then select the reCaptcha !!");
-                    msg.focus();
-            });
+                });
 		}
 }
 
