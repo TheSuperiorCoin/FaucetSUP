@@ -109,6 +109,28 @@ function setTimer(){
 $(document).ready(function(){
     //start once page is load
     getBalance();
+    
+    $("#tb-payments").DataTable({
+        "bDeferRender"    : true,
+        "sPaginationType" : "full_numbers",
+        "ajax" : {"url" : "./getTbPayments.php", "type" : "POST"},
+        "columns" : [
+                    {"data" : "amount"},
+                    {"data" : "status"},
+                    {"data" : "address"},
+                    {"data" : "date"}
+                    ],
+        "sLengthMenu" : 'Show <select>'+
+            '<option value="10">10</optnion>'+
+            '<select> records',
+        "sLoadingRecords" : "Please wait records are coming....",
+        "oPaginate" : {
+                        "sFirst"    : "1",
+                        "sLast"     : "10",
+                        "sNext"     : "next",
+                        "sPrevious" : "back"
+                    }
+    })
 
     $("#btnClaim").click(function(){
         alert("This could an Add-On");
