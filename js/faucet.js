@@ -30,7 +30,7 @@ function getBalance(){
             
             //START TIMER
             setTimer();
-            $("$#destination").text(address); //not worcking properly
+            $("#destination").text(address);
 
         }
     });
