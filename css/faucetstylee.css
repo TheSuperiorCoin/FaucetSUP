@@ -41,6 +41,7 @@
     color: white;
     border-radius: 15px;
     background-color: red;
+    visibility:hidden;
 }
 
 .succes_signup_modal{

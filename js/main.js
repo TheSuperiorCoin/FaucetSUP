@@ -30,7 +30,7 @@ function logIn(){
 
 
 function verifyUser(){
-
+        
         var name   = $('#user_name').val();
 		var email  = $('#user_email').val();
 		var pw     = $('#user_pw').val(); 
@@ -40,43 +40,50 @@ function verifyUser(){
 		var result = validate();
 
 		if (name == '') 
-		{
+		{ 
+            $("msg").css("visibility", "visible");
 			msg.text("Your Name is Requiered! Please enter your Name or Username");
 			$('#user_name').focus();
 		}
 		else if(email == '')
 		{
+            $("msg").css("visibility", "visible");
 			msg.text("Your Email is Requiered! Please enter a valid Email");
 			$('#user_email').focus();
 		}
 		else if(!result)
 		{
+            $("msg").css("visibility", "visible");
 			msg.text("Enter a valid email!");
         	$("#user_email").focus();	
 		}
 		else if(pw == '')
 		{
+            $("msg").css("visibility", "visible");
 			msg.text("Password is Requiered! Please enter your Password this will be encrypted");
 			$('#user_pw').focus();
 		}
 		else if(cpass == '' || pw != cpass)
 		{
+            $("msg").css("visibility", "visible");
 			msg.text("Please enter the same Password");
 			$('#cpass').focus();
 		}
 		else if(wallet == '')
 		{
+            $("msg").css("visibility", "visible");
 			msg.text("Please a Wallet Address is Requiered");
 			$('#user_address').focus();
 		}
 		else if(wallet.length != 95)
 		{
+            $("msg").css("visibility", "visible");
 			msg.text("Please enter a Valid Wallet Address");
 			$('#user_address').focus();
 		}
 		else
 		{ 
-            
+            /*reCaptcha request is not worcking properly
             $.ajax({
                     type: 'POST',
                     url: 'https://www.google.com/recaptcha/api/siteverify',
@@ -89,6 +96,7 @@ function verifyUser(){
                 {
                     if (data == "g-recaptcha-response") 
                     {
+                    */
                         $.post('./newUser.php',
                             {
                                 user_name    : name,
@@ -100,16 +108,19 @@ function verifyUser(){
 
                                 if(data.user_email == email)
                                 {
+                                    $("msg").css("visibility", "visible");
                                     $("#msg").text("There is an account registered whith this email");
                                     $("#user_email").focus();
                                 }
                                 else if(data.user_address == wallet)
                                 {
+                                    $("msg").css("visibility", "visible");
                                     $("#msg").text("There is an account registered with this wallet address");
                                     $("#user_address").focus();
                                 }         
                                 else if(data.status == 404)
                                 {
+                                    $("msg").css("visibility", "visible");
                                     $("#msg").text(data.message);  
                                 }
                                 else
@@ -134,13 +145,16 @@ function verifyUser(){
                                 }
                             });
                         
-                    }else{
+                    }
+                    /*
+                    else{
 
                          msg.text("Are you a robot? Then select the reCaptcha !!");
                          msg.focus();
                     }
                 });
 		}
+                */
 }
 
 function validateEmail(email) {
