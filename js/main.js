@@ -76,10 +76,16 @@ function verifyUser(){
 		}
 		else
 		{ 
-            $.post('https://www.google.com/recaptcha/api/siteverify',
-                {
-                    secret : "6LdKHlcUAAAAANNw_Dbvb5oxQ7cFvwUcrNfKV0J1"
-                }).done(function(data,status)
+            
+            $.ajax({
+                    type: 'POST',
+                    url: 'https://www.google.com/recaptcha/api/siteverify',
+                    headers: 
+                    {
+                        'Access-Control-Allow-Origin' : "https://www.google.com/recaptcha/api/siteverify",
+                    },
+                    data : "6LdKHlcUAAAAANNw_Dbvb5oxQ7cFvwUcrNfKV0J1"  
+                }).done(function(data) 
                 {
                     if (data == "g-recaptcha-response") 
                     {
@@ -133,7 +139,10 @@ function verifyUser(){
                          msg.text("Are you a robot? Then select the reCaptcha !!");
                          msg.focus();
                     }
-                });
+                }).error(function(e){
+                    msg.text("Are you a robot? Then select the reCaptcha !!");
+                    msg.focus();
+            });
 		}
 }
 
