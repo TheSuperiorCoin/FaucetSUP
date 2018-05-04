@@ -141,7 +141,19 @@ function getTbPayments(){
         "ajax": {
             "url": "./getTbPayments.php",
             "type": "post"
-        }
+        },
+        "columns" : [
+                    {"data" : "amount"},
+                    {"data" : "status"},
+                    {"data" : "address"},
+                    {"data" : "date"}
+                    ],
+        "oPaginate" : {
+                        "sFirst"    : "1",
+                        "sLast"     : "10",
+                        "sNext"     : "next",
+                        "sPrevious" : "back"
+                    }
     });
 }
 
