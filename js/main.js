@@ -179,8 +179,26 @@ function setCookie(){
     Cookies.set("session", "foo", {expires : date});
 }
 
+function getPool(){
+    
+    //GET POOL BALANCE
+    var xhttp = new XMLHttpRequest(); 
+    //CHECK STATUS VALUES -IF-ADD TEXT TO DIV -ELSE-NO CONNECTION MESSAGE
+        xhttp.onreadystatechange = function(){
+            if(this.readyState == 4 && this.status == 200){
+                $("#spnPoolAmount").text(this.response);
+            }
+            else{
+            	$("#spnPoolAmount").text("INVALID CONNECTION");
+            }
+        };
+    xhttp.open("GET","pool-show.php", true); //(METHOD,URL,BOOLEAN)
+    xhttp.send();// SEND THE REQUEST
+}
 
 $(document).ready(function(){
+    
+    getPool();
     
     $("#btnLogIn").click(function(){
         logIn();
