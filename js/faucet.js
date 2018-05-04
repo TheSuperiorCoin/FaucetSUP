@@ -128,7 +128,7 @@ function setTbPayments(){
                         "sNext"     : "next",
                         "sPrevious" : "back"
                     }
-    })
+    });
 }
 
 function setTimer(){

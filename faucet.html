@@ -27,13 +27,13 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="#">Home</a>
-      </li>
-      <li class="nav-item">
         <a id="aClaim" class="nav-link" href="#modal1" data-toggle="modal" data-target="#modal1">Claim</a>
       </li>
       <li class="nav-item">
         <a class="nav-link" href="#modal2" data-toggle="modal" data-target="#modal2">Transfer</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#modal3" data-toggle="modal" data-target="#modal3">MyHistory</a>
       </li>
       <li class="nav-item">
         <a id="btnLogOut" class="nav-link" href="#">Log Out</a>
@@ -183,7 +183,48 @@
     </div>
   </div>
 </div> <!--MODAL TRANFER ENDS-->
-    
+   
+   
+   <!--MODAL-->
+<div class="modal fade" id="modal3" tabindex="-1" role="dialog" aria-labelledby="modal3" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">My History</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="container-fluid">
+            <div class="row">
+              <div class="col-sm-12 history-container">
+                  <div class="row">
+                     <div class="col-sm-3 history" style="background-color: green">
+                          <h5>ID</h5>
+                      </div>
+                      <div class="col-sm-3 history" style="background-color: aqua">
+                        <h5>Amount</h5>
+                      </div>
+                      <div class="col-sm-3 history" style="background-color: red">
+                          <h5>Status</h5>
+                      </div>
+                      <div class="col-sm-3 history" style="background-color: orange">
+                          <h5>Date</h5>
+                      </div>
+                  </div>
+              </div>
+            </div>
+          </div> <!--ENDS CONTAINER FLUID-->
+        </div> <!--MODA-BODY ENDS-->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div> <!--MODAL FOOTER ENDS-->
+    </div> <!--MODAL CONTENT ENDS-->
+  </div> <!--MODAL DIALOG ENDS-->
+</div> <!--MODAL MYHISTORY ENDS-->
+  
+      
     <!--SCRIPTS-->
     <script src="js/faucet.js"></script>
     <script src="js/js.cookie.js"></script>

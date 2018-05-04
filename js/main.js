@@ -41,43 +41,43 @@ function verifyUser(){
 
 		if (name == '') 
 		{ 
-            $("msg").css("visibility", "visible");
+            $("#msg").css("visibility", "visible");
 			msg.text("Your Name is Requiered! Please enter your Name or Username");
 			$('#user_name').focus();
 		}
 		else if(email == '')
 		{
-            $("msg").css("visibility", "visible");
+            $("#msg").css("visibility", "visible");
 			msg.text("Your Email is Requiered! Please enter a valid Email");
 			$('#user_email').focus();
 		}
 		else if(!result)
 		{
-            $("msg").css("visibility", "visible");
+            $("#msg").css("visibility", "visible");
 			msg.text("Enter a valid email!");
         	$("#user_email").focus();	
 		}
 		else if(pw == '')
 		{
-            $("msg").css("visibility", "visible");
+            $("#msg").css("visibility", "visible");
 			msg.text("Password is Requiered! Please enter your Password this will be encrypted");
 			$('#user_pw').focus();
 		}
 		else if(cpass == '' || pw != cpass)
 		{
-            $("msg").css("visibility", "visible");
+            $("#msg").css("visibility", "visible");
 			msg.text("Please enter the same Password");
 			$('#cpass').focus();
 		}
 		else if(wallet == '')
 		{
-            $("msg").css("visibility", "visible");
+            $("#msg").css("visibility", "visible");
 			msg.text("Please a Wallet Address is Requiered");
 			$('#user_address').focus();
 		}
 		else if(wallet.length != 95)
 		{
-            $("msg").css("visibility", "visible");
+            $("#msg").css("visibility", "visible");
 			msg.text("Please enter a Valid Wallet Address");
 			$('#user_address').focus();
 		}
@@ -114,13 +114,13 @@ function verifyUser(){
                                 }
                                 else if(data.user_address == wallet)
                                 {
-                                    $("msg").css("visibility", "visible");
+                                    $("#msg").css("visibility", "visible");
                                     $("#msg").text("There is an account registered with this wallet address");
                                     $("#user_address").focus();
                                 }         
                                 else if(data.status == 404)
                                 {
-                                    $("msg").css("visibility", "visible");
+                                    $("#msg").css("visibility", "visible");
                                     $("#msg").text(data.message);  
                                 }
                                 else
