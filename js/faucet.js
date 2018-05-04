@@ -143,17 +143,12 @@ function getTbPayments(){
             "type": "post"
         },
         "columns" : [
-                    {"data" : "amount"},
-                    {"data" : "status"},
-                    {"data" : "address"},
-                    {"data" : "date"}
-                    ],
-        "oPaginate" : {
-                        "sFirst"    : "1",
-                        "sLast"     : "10",
-                        "sNext"     : "next",
-                        "sPrevious" : "back"
-                    }
+                    {"data" : "id_payments"},
+                    {"data" : "payments_balance"},
+                    {"data" : "payments_status"},
+                    {"data" : "payments_wallet"},
+                    {"data" : "payments_date"},
+                    ]
     });
 }
 
