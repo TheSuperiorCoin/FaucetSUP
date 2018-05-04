@@ -141,14 +141,7 @@ function getTbPayments(){
         "ajax": {
             "url": "./getTbPayments.php",
             "type": "post"
-        },
-        "columns" : [
-                    {"data" : "id_payments"},
-                    {"data" : "payments_balance"},
-                    {"data" : "payments_status"},
-                    {"data" : "payments_wallet"},
-                    {"data" : "payments_date"},
-                    ]
+        }
     });
 }
 
