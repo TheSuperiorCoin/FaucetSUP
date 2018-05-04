@@ -11,7 +11,7 @@ $col = array(
 //$cnn = include 
 
 $query = "SELECT * FROM vf_paymetns";
-$result = mysqli_query($cnn, $query)
+$result = mysqli_query($cnn, $query);
 
 $totalData = mysqli_num_rows($result);
 

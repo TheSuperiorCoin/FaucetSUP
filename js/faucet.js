@@ -140,7 +140,7 @@ function getTbPayments(){
         "serverSide": true,
         "ajax": {
             "url": "./getTbPayments.php",
-            "type": "POST"
+            "type": "post"
         }
     });
 }
