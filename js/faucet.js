@@ -108,7 +108,7 @@ function setPayments(){
 
 function getTbPayments(){
    
-    $("#tb-payments").dataTable({
+    $("#tb-payments").DataTable({
         "bDeferRender"    : true,
         "sPaginationType" : "full_numbers",
         "ajax" : {"url" : "./getTbPayments.php", "type" : "POST"},
@@ -149,7 +149,7 @@ function setTimer(){
 $(document).ready(function(){
     //start once page is load
     getBalance();
-    //getTbPayments();
+    getTbPayments();
     
     $("#btnClaim").click(function(){
         alert("This could an Add-On");
