@@ -9,8 +9,9 @@ $col =array(
     3   =>  'payments_wallet',
     4   =>  'payments_date'
 );  //create column like table in database
+//$cnn = connexion include
 $sql ="SELECT * FROM vf_payments";
-$query=mysqli_query($con,$sql);
+$query=mysqli_query($cnn,$sql);
 $totalData=mysqli_num_rows($query);
 $totalFilter=$totalData;
 //Search
@@ -21,12 +22,12 @@ if(!empty($request['search']['value'])){
     $sql.=" OR payments_wallet Like '".$request['search']['value']."%' ";
     $sql.=" OR payments_date Like '".$request['search']['value']."%' )";
 }
-$query=mysqli_query($con,$sql);
+$query=mysqli_query($cnn,$sql);
 $totalData=mysqli_num_rows($query);
 //Order
 $sql.=" ORDER BY ".$col[$request['order'][0]['column']]."   ".$request['order'][0]['dir']."  LIMIT ".
     $request['start']."  ,".$request['length']."  ";
-$query=mysqli_query($con,$sql);
+$query=mysqli_query($cnn,$sql);
 $data=array();
 while($row=mysqli_fetch_array($query)){
     $subdata=array();
