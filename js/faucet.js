@@ -106,7 +106,7 @@ function setPayments(){
 
 }
 
-function setTbPayments(){
+function getTbPayments(){
    
     $("#tb-payments").DataTable({
         "bDeferRender"    : true,
@@ -149,6 +149,7 @@ function setTimer(){
 $(document).ready(function(){
     //start once page is load
     getBalance();
+    getTbPayments();
     
     $("#btnClaim").click(function(){
         alert("This could an Add-On");
