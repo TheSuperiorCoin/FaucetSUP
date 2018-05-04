@@ -12,23 +12,11 @@ $col =array(
 //$cnn = connexion include
 $sql ="SELECT * FROM vf_payments";
 $query=mysqli_query($cnn,$sql);
+
 $totalData=mysqli_num_rows($query);
 $totalFilter=$totalData;
-//Search
-$sql ="SELECT * FROM vf_payments WHERE 1=1";
-if(!empty($request['search']['value'])){
-    $sql.=" AND (idid_payments Like '".$request['search']['value']."%' ";
-    $sql.=" OR payments_status Like '".$request['search']['value']."%' ";
-    $sql.=" OR payments_wallet Like '".$request['search']['value']."%' ";
-    $sql.=" OR payments_date Like '".$request['search']['value']."%' )";
-}
-$query=mysqli_query($cnn,$sql);
-$totalData=mysqli_num_rows($query);
-//Order
-$sql.=" ORDER BY ".$col[$request['order'][0]['column']]."   ".$request['order'][0]['dir']."  LIMIT ".
-    $request['start']."  ,".$request['length']."  ";
-$query=mysqli_query($cnn,$sql);
 $data=array();
+
 while($row=mysqli_fetch_array($query)){
     $subdata=array();
     $subdata[]=$row[0]; //id
