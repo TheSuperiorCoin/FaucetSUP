@@ -108,7 +108,7 @@ function setPayments(){
 
 function getTbPayments(){
    
-    $("#tb-payments").DataTable({
+    var table = $("#tb-payments").DataTable({
         "bDeferRender"    : true,
         "sPaginationType" : "full_numbers",
         "ajax" : {"url" : "./getTbPayments.php", "type" : "POST"},
