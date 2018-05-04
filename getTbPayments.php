@@ -1,5 +1,4 @@
 <?php 
-ini_set('display_errors', true);
 include("./connex.php");
 //$cnn = include 
 

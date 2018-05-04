@@ -108,10 +108,14 @@ function setPayments(){
 
 function getTbPayments(){
    
-    var table = $("#tb-payments").DataTable({
+    /*
+        $("#tb-payments").DataTable({
         "bDeferRender"    : true,
         "sPaginationType" : "full_numbers",
-        "ajax" : {"url" : "./getTbPayments.php", "type" : "POST"},
+        "ajax" : {
+            "url" : "./getTbPayments.php",
+            "type" : "POST"
+        },
         "columns" : [
                     {"data" : "amount"},
                     {"data" : "status"},
@@ -128,6 +132,16 @@ function getTbPayments(){
                         "sNext"     : "next",
                         "sPrevious" : "back"
                     }
+    });
+    */
+    
+    var dataTable = $('#tb-payments').DataTable( {
+        "processing": true,
+        "serverSide": true,
+        "ajax": {
+            "url": "./getTbPayments.php",
+            "type": "POST"
+        }
     });
 }
 
