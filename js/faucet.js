@@ -31,6 +31,9 @@ function getBalance(){
             //START TIMER
             setTimer();
             $("#destination").val(address);
+            $("#spnPaid").val(data.wallet_paids);
+            $("#spnWithdraws").val(data.wallet_withdraws);
+            getUser(); // Function help to fill MyHistory option.
 
         }
     });
@@ -104,6 +107,27 @@ function setPayments(){
         }
     });
 
+}
+
+function getUser(){
+    var address = $("#txtWallet").val();
+
+    $.post('./getUser.php',
+           {
+            user_address : address
+           }).done(function(data)
+                   {
+                        if(data.status == 404)
+                            {
+                                $("#alert_msg").text("This Address does not exist, please Sign-Up first");
+                                $("#alert_modal").modal("show");
+                            }
+                        else
+                            {   
+                                $("#spnIdUser").val(data.user_name);
+                                $("#spnEmail").val(data.user_email);
+                            }
+    });
 }
 
 function getTbPayments(){

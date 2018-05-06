@@ -83,7 +83,7 @@ function verifyUser(){
 		}
 		else
 		{ 
-            /*reCaptcha request is not worcking properly
+            reCaptcha request is not worcking properly
             $.ajax({
                     type: 'POST',
                     url: 'https://www.google.com/recaptcha/api/siteverify',
@@ -96,7 +96,7 @@ function verifyUser(){
                 {
                     if (data == "g-recaptcha-response") 
                     {
-                    */
+                  //  */
                         $.post('./newUser.php',
                             {
                                 user_name    : name,
@@ -146,7 +146,7 @@ function verifyUser(){
                             });
                         
                     }
-                    /*
+                   // /*
                     else{
 
                          msg.text("Are you a robot? Then select the reCaptcha !!");
@@ -154,7 +154,7 @@ function verifyUser(){
                     }
                 });
 		}
-                */
+               // */
 }
 
 function validateEmail(email) {
