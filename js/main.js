@@ -83,7 +83,7 @@ function verifyUser(){
 		}
 		else
 		{ 
-            reCaptcha request is not worcking properly
+            //reCaptcha request is not worcking properly
             $.ajax({
                     type: 'POST',
                     url: 'https://www.google.com/recaptcha/api/siteverify',
