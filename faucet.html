@@ -201,21 +201,67 @@
       <div class="modal-body">
           <div class="container-fluid">
             <div class="row">
-              <div class="col-sm-12 history-container">
-                  <div class="row">
-                     <div class="col-sm-3 history" style="background-color: green">
-                          <h5>ID</h5>
-                      </div>
-                      <div class="col-sm-3 history" style="background-color: aqua">
-                        <h5>Amount</h5>
-                      </div>
-                      <div class="col-sm-3 history" style="background-color: red">
-                          <h5>Status</h5>
-                      </div>
-                      <div class="col-sm-3 history" style="background-color: orange">
-                          <h5>Date</h5>
-                      </div>
+              <div class="col-sm-12">
+                  <nav>
+                  <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="true">Profile</a>
+                    <a class="nav-item nav-link" id="nav-wallet-tab" data-toggle="tab" href="#nav-wallet" role="tab" aria-controls="nav-wallet" aria-selected="false">Wallet-History</a>
                   </div>
+                </nav>
+                <div class="tab-content" id="nav-tabContent">
+                  <div class="tab-pane fade show active" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                        <div class="row">
+                          <div class="col-sm-12 profile-hero">
+                            <img src="assets/img/user.png" alt="USER-IMG" style="width: 50px; height: 50px;">
+                            <br/>
+                            <span id="spnIdUser">user</span>
+                          </div>
+                          
+                          <div class="col-sm-4" style="text-align: center;">
+                              <h5>Email</h5>
+                              <span>hn@superior.com</span>
+                          </div>
+                          
+                          <div class="col-sm-4" style="text-align: center;">
+                              <h5>Paids</h5>
+                                <span>0</span>
+                          </div>
+                          
+                          <div class="col-sm-4" style="text-align: center;">
+                             <h5>Withdraws</h5>
+                                <span>0</span> 
+                          </div>
+                        </div>
+                  </div>
+                  <div class="tab-pane fade" id="nav-wallet" role="tabpanel" aria-labelledby="nav-wallet-tab">
+                      
+                      <div class="row">
+            <div class="col-xs-7 offset-xs-3 col-md-10 offset-md-1">
+                <div class="payments-container">
+                    <div class="table-responsive">
+                        <table id="tb-payments" class="table">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Amount</th>
+                              <th scope="col">Status</th>
+                              <th scope="col">Address</th>
+                              <th scope="col">Date/Time</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <!-- AJAX REQUEST GOES BELOW-->
+                            
+                          </tbody>
+                        </table>
+                    </div> <!-- TABLE-RESPONSIVE ENDS -->
+                </div> <!-- PAYMENTS-CONTAINER ENDS-->
+            </div> <!-- COL-OFFSET ENDS -->
+        </div> <!--ENDS ROW -->
+                      
+                  </div>
+                  
+                </div>
               </div>
             </div>
           </div> <!--ENDS CONTAINER FLUID-->
